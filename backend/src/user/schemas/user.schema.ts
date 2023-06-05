@@ -1,11 +1,11 @@
-import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { HydratedDocument } from 'mongoose';
+import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
+import { HydratedDocument } from "mongoose";
 
 @Schema()
 export class User {
     @Prop({
         type: String,
-        default: 'User#' + Array.from({ length: 6 }, () => Math.floor(Math.random() * 10)).join(''),
+        default: "User#" + Array.from({ length: 6 }, () => Math.floor(Math.random() * 10)).join(""),
     })
     username: string;
 

@@ -1,8 +1,5 @@
-import { User } from "src/user/schemas/user.schema";
-
-export class RegisterUserDTO extends User {
-    auth: {
-        email: string;
-        password: string;
-    };
+export class RegisterUserDTO {
+    email: string;
+    password: string;
+    username: string;
 }

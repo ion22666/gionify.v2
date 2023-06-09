@@ -1,5 +1,6 @@
 declare namespace NodeJS {
     interface ProcessEnv {
+        ENV: "development" | "production";
         MONGODB_USERNAME: string;
         MONGODB_PASSWORD: string;
         MONGODB_PROD_DATABASE_NAME: string;

@@ -13,7 +13,7 @@ export class User {
         type: Number,
         default: () => Date.now(),
     })
-    registeredAt: number;
+    registeredAt?: number;
 
     @Prop({
         type: {
@@ -27,7 +27,7 @@ export class User {
             },
         },
     })
-    auth: {
+    auth?: {
         email: string;
         password: string;
     };
@@ -48,7 +48,7 @@ export class User {
             },
         },
     })
-    oauth: {
+    oauth?: {
         google: {
             email: string;
             password: string;

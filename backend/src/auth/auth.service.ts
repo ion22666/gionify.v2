@@ -29,13 +29,13 @@ export class AuthService {
     }
 
     async registerUser(registerDto: RegisterUserDTO) {
-        if (!this.verifyEmail(registerDto.auth.email)) throw new Error("Invalid email");
+        if (!this.verifyEmail(registerDto.email)) throw new Error("Invalid email");
 
-        if (await this.userService.findOne({ "auth.email": registerDto.auth.email })) throw new Error("Email already in use");
+        if (await this.userService.findOne({ "auth.email": registerDto.email })) throw new Error("Email already in use");
 
-        if (!this.isValidPassoword(registerDto.auth.password)) throw new Error("Invalid password");
+        if (!this.isValidPassoword(registerDto.password)) throw new Error("Invalid password");
 
-        registerDto.auth.password = await this.hashPassword(registerDto.auth.password);
+        registerDto.password = await this.hashPassword(registerDto.password);
 
         const user = await this.userService.create(registerDto);
 
@@ -50,7 +50,7 @@ export class AuthService {
     }
 
     checkPasswordForUser(user: UserDocument, password: string): Promise<boolean> {
-        return argon2.verify(user.auth.password, password);
+        return argon2.verify(user.auth?.password || "", password);
     }
 
     createJwtForUser(user: UserDocument) {

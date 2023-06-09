@@ -2,26 +2,49 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+    font-family: "Circular-Black";
+    src: url(/fonts/CircularStd-Black.woff) format("woff");
+}
+@font-face {
+    font-family: "Circular-Bold";
+    src: url(/fonts/CircularStd-Bold.woff) format("woff");
+}
+@font-face {
+    font-family: "Circular-Book";
+    src: url(/fonts/CircularStd-Black.woff) format("woff");
+}
+@font-face {
+    font-family: "Circular-Medium";
+    src: url(/fonts/CircularStd-Medium.woff) format("woff");
+}
+@font-face {
+    font-family: "Circular-Light";
+    src: url(/fonts/CircularStd-Light.woff) format("woff");
+}
+
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+    --foreground-rgb: 0, 0, 0;
+    --background-start-rgb: 214, 219, 220;
+    --background-end-rgb: 255, 255, 255;
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+    :root {
+        --foreground-rgb: 255, 255, 255;
+        --background-start-rgb: 0, 0, 0;
+        --background-end-rgb: 0, 0, 0;
+    }
 }
 
+* {
+    font-family: "Circular-Medium";
+    box-sizing: border-box;
+}
+input:focus {
+    outline: none;
+}
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+    color: rgb(var(--foreground-rgb));
+    background: linear-gradient(to bottom, transparent, rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
 }

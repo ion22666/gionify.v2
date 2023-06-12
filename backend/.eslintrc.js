@@ -30,6 +30,10 @@ module.exports = {
             {
                 endOfLine: "auto",
                 singleQuote: false,
+                tabWidth: 4,
+                printWidth: 180,
+                arrowParens: "always",
+                bracketSameLine: false,
             },
         ],
     },

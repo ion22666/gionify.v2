@@ -1,12 +1,13 @@
 import crypto from "crypto";
 import * as argon2 from "argon2";
-import JWT from "jsonwebtoken";
+import * as JWT from "jsonwebtoken";
 
 import { Injectable } from "@nestjs/common";
 import { LoginUserDTO } from "./dto/login.dto";
 import { User, UserDocument } from "src/user/schemas/user.schema";
-import { UserService } from "src/user/user.service";
-import { RegisterUserDTO } from "./dto/register.dto";
+import { RegisterUserDTO } from "./dto/register.req.dto";
+import { UserService } from "../user/user.service";
+import { RegisterUserResponseDTO } from "./dto/register.res.dto";
 
 @Injectable()
 export class AuthService {
@@ -28,7 +29,7 @@ export class AuthService {
         };
     }
 
-    async registerUser(registerDto: RegisterUserDTO) {
+    async registerUser(registerDto: RegisterUserDTO): RegisterUserResponseDTO {
         if (!this.verifyEmail(registerDto.email)) throw new Error("Invalid email");
 
         if (await this.userService.findOne({ "auth.email": registerDto.email })) throw new Error("Email already in use");

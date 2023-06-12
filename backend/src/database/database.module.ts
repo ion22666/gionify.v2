@@ -1,9 +1,9 @@
 import { Module } from "@nestjs/common";
-import { databaseProvider } from "./database.provider";
+import { databaseProviders } from "./database.provider";
 import { MongooseModule } from "@nestjs/mongoose";
 
 @Module({
-    imports: [databaseProvider],
+    imports: [...databaseProviders],
     exports: [MongooseModule],
 })
 export class DatabaseModule {}

@@ -15,7 +15,9 @@ export class UserService {
         return this.UserModel.find();
     }
 
-    findOneById = this.UserModel.findById<User>;
+    findOneById(...args: Parameters<typeof this.UserModel.deleteOne>) {
+        return this.UserModel.findById(...args);
+    }
 
     async findOne(user: FilterQuery<User>) {
         return await this.UserModel.findOne(user);
@@ -23,5 +25,7 @@ export class UserService {
 
     updateOne = this.UserModel.updateOne<User>;
 
-    deleteOne = this.UserModel.deleteOne;
+    deleteOne(...args: Parameters<typeof this.UserModel.deleteOne>) {
+        return this.UserModel.deleteOne(...args);
+    }
 }

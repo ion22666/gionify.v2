@@ -1,7 +1,9 @@
-import { Body, Controller, Get, Post } from "@nestjs/common";
+import { Body, Controller, Get, Post, Req, Headers } from "@nestjs/common";
 import { AuthService } from "./auth.service";
 import { LoginUserDTO } from "./dto/login.dto";
-import { RegisterUserDTO } from "./dto/register.dto";
+import { RegisterUserDTO } from "./dto/register.req.dto";
+import { Request } from "express";
+import { RegisterUserResponseDTO } from "./dto/register.res.dto";
 
 @Controller("auth")
 export class AuthController {
@@ -13,7 +15,7 @@ export class AuthController {
     }
 
     @Post("register")
-    registerUser(@Body() registerDto: RegisterUserDTO) {
+    registerUser(@Body() registerDto: RegisterUserDTO, @Req() req: Request): Promise<RegisterUserResponseDTO> {
         return this.authService.registerUser(registerDto);
     }
 }

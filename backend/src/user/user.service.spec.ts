@@ -19,8 +19,9 @@ describe("UserService", () => {
     let userDocRef: UserDocument;
 
     beforeAll(async () => {
+        console.log("UserSchema", UserSchema.toString(), UserSchema);
         const module: TestingModule = await Test.createTestingModule({
-            imports: [DatabaseModule, MongooseModule.forFeature([{ name: User.name, schema: UserSchema }])],
+            imports: [DatabaseModule, MongooseModule.forFeature([{ name: UserSchema.toString(), schema: UserSchema }])],
             providers: [UserService],
         }).compile();
 
